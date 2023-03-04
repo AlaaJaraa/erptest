@@ -29,7 +29,9 @@ app_license = "MIT"
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
-
+doctype_js = {
+	"Item" : "public/js/doctype/item.js"
+	}
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
@@ -90,7 +92,10 @@ app_license = "MIT"
 # override_doctype_class = {
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
-
+# override_doctype_class = {
+# 	"Sales Order": "pharmacy.overrides.override_sales_order.SalesOrder",
+# 	"Delivery Note": "pharmacy.overrides.override_delivery_note.DeliveryNote"
+# }
 # Document Events
 # ---------------
 # Hook on document methods and events

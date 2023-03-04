@@ -1,0 +1,332 @@
+// $base-active-color: #2d72a4;
+// // $navbar-brand-color: #a8b324;
+// $navbar-brand-color:  #111;
+// // $navbar-background-color:  #0a472e;
+
+// @import "../lib/horizontalscroll";
+// @import "../lib/verticalscroll";
+// @import "../lib/mixin";
+$border-color: #161e2e;
+$header-background-color: hsl(0, 0%, 90%);
+$orange-background:#ed912a;
+$white-background:#ffffff;
+// $tooltip-inner-font-size :10px;
+.tooltip-inner{
+    font-size: 0.70rem;
+}
+.infotable{
+    table{
+        th{
+            background-color: $orange-background;
+            color: black;
+            // font-weight: bold;
+        }
+    }
+}
+
+#placeholdersection100{
+    .items_block{
+        touch-action: pan-y;
+    }
+    .HorizontalScrollContainer {
+        user-select: none; /* standard syntax */
+        -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+        -moz-user-select: none; /* mozilla browsers */
+        -ms-user-select: none;
+        -khtml-user-select: none; /* webkit (konqueror) browsers */
+        -ms-user-select: none; /* IE10+ */
+    }
+
+    .HorizontalScrollContainer__left{
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10%;
+            height: 100%;
+            // background: linear-gradient(to right, #d3d3d3, transparent);
+            background: linear-gradient(to right, #f7dab8, transparent);
+            opacity: 0.5;
+          }
+    }
+    .HorizontalScrollContainer__right{
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10%;
+            height: 100%;
+            // background: linear-gradient(to left, #d3d3d3, transparent);
+            background: linear-gradient(to left, #f7dab8, transparent);
+            opacity: 0.5;
+          }
+    }
+      
+    .firsttable,.updates,.sandbox,.bandwidth,.support,.development,.portal{
+
+        tr{
+            height: 75px;
+        }
+    }
+    .Backups{
+        tr{
+            height: 90px;
+        }
+    }
+
+
+    td{direction: ltr;};
+    
+    .active{
+        display: flex !important;
+    }
+    .homeboxproduct{
+        .plansheader,.plansfooter{
+            height: 50px;
+            
+            tr{
+                height: 50px;
+                a{
+                    // border: $white-background 1px solid;
+                    padding: 8px;
+                    background-color: $border-color ;
+                    color: $white-background;
+                }
+                a:before{
+                    content:"> ";
+                    font-size: 14px;
+                    color:$white-background;
+                }
+                
+                a:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+        .plansheader{
+            position: sticky;
+            top: 72px;
+            z-index: 5;
+            background-color: $orange-background;
+            opacity: 1;
+            border-bottom: $border-color 1px solid;
+            .table{
+                color: $border-color !important;
+            }
+            
+        }
+        .plansfooter{
+            position: sticky;
+            bottom: 0;
+            z-index: 4;
+            background-color: $orange-background;
+            opacity: 1;
+            border-top: 1px solid $border-color;
+            color:$border-color;
+        }
+        .sticky{
+            position: sticky;
+            height: 60px;
+            top: 113.5px;
+            z-index: 3;
+            background-color: $orange-background;
+            opacity: 1;
+        }
+        .fixedwidth{
+            width: 200px;
+
+        }
+
+        .title{
+            align-items: flex-start;
+        }
+        .row{
+            margin-right: 0; 
+            margin-left: 0;
+            flex-wrap: nowrap;
+            .Item { 
+                .btn{
+                    // background-color:$header-background-color!important;
+                    background-color:$orange-background !important;
+                    color: black!important;
+                }
+            }   
+        }
+        .tablesection{
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            display: flex;
+            flex-direction: row;
+            align-self: center;
+            justify-content: flex-start;
+            color:$border-color;
+        }
+        .tablesection button{
+            border: unset;cursor: pointer;background-color: transparent;
+        }
+        .tablesection button:focus{
+            outline: none;
+            border: unset;cursor: pointer;background-color: transparent;
+        }
+        table{
+            border-spacing: 0px  !important;
+        }
+        .table th, .table td {
+            padding: 0 !important;
+    
+            border-top: none !important; 
+        }
+        // tr{
+        //     height: 130px;
+        // }
+        td{
+            vertical-align: middle !important;
+            text-align: center;
+            padding: 0 !important;
+            /* border-top: none !important; */  
+        }
+        td button{
+            border: unset;cursor: pointer;background-color: transparent;
+        }
+        td button:focus{
+            outline: none;
+            border: unset;cursor: pointer;background-color: transparent;
+        }
+    }
+
+    
+    
+}
+
+
+#placeholdersection100 {
+    // HorizontalScroll($itemheight, $itemwidth, $scrollbacktop, $scrollnexttop,$scrollbackleft, $scrollnextright) 
+    @include HorizontalScroll(auto, 200px, 0px, 0px, 0px, 0px);
+    background: #ffffff;
+
+    .ScrollBack, .ScrollNext {
+        box-shadow: none !important;
+        z-index: 2;
+        font-size: 30px;
+        color: $border-color;
+        height: 100%;
+        // width: 60px;
+        // background: #e6e6e6;
+        
+    }
+    .ScrollNext:hover{
+        cursor:pointer;
+    }
+    .ScrollBack:hover{
+            cursor:pointer;
+    }
+
+}
+
+@each $size in map-keys($grid-breakpoints) {
+    @include media-min($size) {
+        .infotable{
+            table{
+                th{
+                    @if $size == xs {
+                        font-size: 11px !important;
+                    }
+                    @else if $size == md {
+                        font-size: 13px !important;
+                    }
+                    @else if $size == lg {
+                        font-size: 14px !important;
+                    }
+                    @else if $size == xl {
+                        font-size: 15px !important;
+                    }
+                }
+                td{
+                    @if $size == xs {
+                        font-size: 11px !important;
+                    }
+                    @else if $size == md {
+                        font-size: 13px !important;
+                    }
+                    @else if $size == lg {
+                        font-size: 14px !important;
+                    }
+                    @else if $size == xl {
+                        font-size: 15px !important;
+                    }
+                }
+            }
+        } 
+        #placeholdersection100{
+            .firsttable,.updates,.sandbox,.bandwidth,.support,.development,.portal{
+
+                tr{
+                    
+                    @if $size == xs {
+                        height: 45px;
+                    }
+                    @else if $size == md {
+                        height: 55px;
+                    }
+                    @else if $size == lg {
+                        height: 65px;
+                    }
+                    @else if $size == xl {
+                        height: 75px;
+                    }
+                }
+            }
+            .Backups{
+                tr{
+                    @if $size == xs {
+                        height: 60px;
+                    }
+                    @else if $size == md {
+                        height: 65px;
+                    }
+                    @else if $size == lg {
+                        height: 85px;
+                    }
+                    @else if $size == xl {
+                        height: 90px;
+                    }
+                }
+            }
+            
+
+            .homeboxproduct{
+                div .Item ,.title{
+                    @if $size == xs {
+                        width: 170px !important;
+                    }
+                    @else if $size == md {
+                        width: 190px !important;
+                    }
+                    @else if $size == lg {
+                        width: 210px !important;
+                    }
+                    // @else if $size == xl {
+                    //     width: 250px !important;
+                    // }
+                    td{
+                        @if $size == xs {
+                            font-size: 11px !important;
+                        }
+                        @else if $size == md {
+                            font-size: 12px !important;
+                        }
+                        @else if $size == lg {
+                            font-size: 14px !important;
+                        }
+                        @else if $size == xl {
+                            font-size: 15px !important;
+                        }
+                    }
+                }
+            }
+        } 
+
+    }
+}

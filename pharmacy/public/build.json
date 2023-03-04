@@ -1,0 +1,20 @@
+{
+	"css/pharmacy.css": [
+		"public/scss/game.scss",
+		"public/scss/pharmacy.scss",
+		"public/scss/clefincode.scss",
+		"public/scss/fancy_slider.scss",
+		"public/scss/bar.scss",
+		"public/scss/swiper.scss"
+	],
+	"js/pharmacy.js": [
+
+	],
+	"css/swiper-bundle.css": [
+		"public/scss/swiper-bundle.css"
+	],
+	"js/swiper-bundle.js": [
+		"public/js/swiper-bundle.js"
+	]
+
+}

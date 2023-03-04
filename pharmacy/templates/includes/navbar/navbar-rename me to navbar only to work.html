@@ -1,0 +1,273 @@
+
+<nav class="navbar navbar-ours navbar-expand-lg" id='navbar'>
+	<div class="container">
+		<a id="navbar-img" style="display: none;" class="navbar-brand" href="{{ url_prefix }}{{ home_page or "/" }}">
+			<img src='/assets/pharmacy/images/ClefinCode-200.png'>
+		</a>
+		<a id="navbar-txt" class="navbar-brand" href="{{ url_prefix }}{{ home_page or "/" }}">
+			{%- if brand_html -%}
+				{{ brand_html }}
+			{%- elif banner_image -%}
+				<img src='{{ banner_image }}'>
+			{%- else -%}
+				<span>{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</span>
+			{%- endif -%}
+		</a>
+		<button class="navbar-toggler" type="button"
+			data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent"
+			aria-expanded="false"
+			aria-label="Toggle navigation">
+			<!-- <span class="navbar-toggler-icon"></span> -->
+			<span>
+				<svg class="icon icon-lg">
+					<use href="#icon-menu"></use>
+				</svg>
+			</span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			{% include "templates/includes/navbar/navbar_items.html" %}
+		</div>
+		<div class="form-group mb-0 " id="language-switcher">
+			<select class="form-control"></select>
+		</div>
+	</div>
+	<div id="transition" class="w-100">
+		<div id="scroolthis" class=" container d-flex flex-row flex-nowrap " style="display: none;height: 100%;">
+			<div id="scroolthisleft" class="">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+				<path style="fill:#ffffff;" d="M0,260.908l174.648-81.136v38.568l-132.08,57.848v0.728l132.08,57.848v38.568L0,292.212V260.908z"/>
+				<path style="fill:#ed912a;" d="M201.6,387.9l77.864-263.8h36.752L238.4,387.9H201.6z"/>
+				<path style="fill:#ffffff;" d="M512,293.284L337.352,373.34v-38.568l134.992-57.848v-0.728L337.352,218.34v-38.568L512,259.828
+					V293.284z"/>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				</svg>
+					
+			</div>
+			<div id="center"  class="">
+			</div>
+			<div id="scroolthisright"  class="" >
+			</div>
+			
+		</div>
+	</div>
+</nav>
+
+<nav class="navbar navbar-ours1 navbar-expand-lg " id='navbar1'>
+	<div class="container">
+		<a id="navbar-img" style="display: none;" class="navbar-brand" href="{{ url_prefix }}{{ home_page or "/" }}">
+			<img src='/assets/pharmacy/images/ClefinCode-200.png'>
+		</a>
+		<a id="" class="navbar-brand" href="{{ url_prefix }}{{ home_page or "/" }}">
+			{%- if brand_html -%}
+				{{ brand_html }}
+			{%- elif banner_image -%}
+				<img src='{{ banner_image }}'>
+			{%- else -%}
+				<span>{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</span>
+			{%- endif -%}
+		</a>
+		<button class="navbar-toggler" type="button"
+			data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent"
+			aria-expanded="false"
+			aria-label="Toggle navigation">
+			<!-- <span class="navbar-toggler-icon"></span> -->
+			<span>
+				<svg class="icon icon-lg">
+					<use href="#icon-menu"></use>
+				</svg>
+			</span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			{% include "templates/includes/navbar/navbar_items.html" %}
+		</div>
+		<div class="form-group mb-0 hide" id="">
+			<select class="form-control"></select>
+		</div>
+	</div>
+	<div id="transition1" class="w-100">
+		<div id="scroolthis1" class=" container d-flex flex-row flex-nowrap " style="display: none;height: 100%;">
+			<div id="scroolthisleft1" class="">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+				<path style="fill:#ffffff;" d="M0,260.908l174.648-81.136v38.568l-132.08,57.848v0.728l132.08,57.848v38.568L0,292.212V260.908z"/>
+				<path style="fill:#ed912a;" d="M201.6,387.9l77.864-263.8h36.752L238.4,387.9H201.6z"/>
+				<path style="fill:#ffffff;" d="M512,293.284L337.352,373.34v-38.568l134.992-57.848v-0.728L337.352,218.34v-38.568L512,259.828
+					V293.284z"/>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				<g>
+				</g>
+				</svg>
+					
+			</div>
+			<div id="center1"  class="">
+			</div>
+			<div id="scroolthisright1"  class="">
+			</div>
+			
+		</div>
+	</div>
+</nav>
+
+
+<script>
+	window.onload=function() {
+    	var currentScrollPos = window.pageYOffset;
+		if ( currentScrollPos < 55 || currentScrollPos==0) {
+			
+			
+			
+			
+			document.getElementById("navbar").style.height = "auto";
+			document.getElementById("navbar1").style.height = "auto";
+			// document.getElementsByClassName("padding-top")[0].style.paddingTop = "calc(33.3vh + 75px)";
+			// document.getElementsByClassName("padding-top")[0].style.paddingTop = "33.3vh ";
+			document.getElementsByClassName("padding-top")[0].style.paddingTop = "0px";
+			document.getElementById("scroolthis").style.display = "block";
+			document.getElementById("scroolthisleft").style.display = "block";
+			document.getElementById("scroolthisright").style.display = "block";
+			document.getElementById("scroolthis1").style.display = "block";
+			document.getElementById("scroolthisleft1").style.display = "block";
+			document.getElementById("scroolthisright1").style.display = "block";
+			// document.getElementById("center").style.display = "block";
+			document.getElementById("navbar-txt").style.display = "block";
+			document.getElementById("navbar-img").style.display = "none";
+
+
+			document.getElementById("center").classList.add("started");
+			document.getElementById("center1").classList.add("started");
+	  	} else {
+
+			
+
+			// document.getElementsByClassName("animateme1")[0].style.display = "block";
+			// document.getElementsByClassName("animateme2")[1].style.display = "block";
+			document.getElementById("navbar").style.height = "75px";
+			document.getElementById("navbar1").style.height = "75px";
+			document.getElementsByClassName("padding-top")[0].style.paddingTop = "91px";
+			document.getElementById("scroolthis").style.display = "none";
+			document.getElementById("scroolthisleft").style.display = "none";
+			document.getElementById("scroolthisright").style.display = "none";
+			document.getElementById("scroolthis1").style.display = "none";
+			document.getElementById("scroolthisleft1").style.display = "none";
+			document.getElementById("scroolthisright1").style.display = "none";
+
+			// document.getElementById("center").style.display = "none";
+			document.getElementById("navbar-img").style.display = "block";
+			document.getElementById("navbar-txt").style.display = "none";
+
+
+			document.getElementById("center").classList.remove("started");
+			document.getElementById("center1").classList.remove("started");
+		}
+	};
+	window.onscroll = function() {
+	var currentScrollPos = window.pageYOffset;
+		if ( currentScrollPos < 55 || currentScrollPos==0) {
+			
+
+			// document.getElementsByClassName("padding-top")[0].style.paddingTop = "calc(33.3vh + 75px)";
+			// document.getElementsByClassName("padding-top")[0].style.paddingTop = "33.3vh ";
+			document.getElementsByClassName("padding-top")[0].style.paddingTop = "0px";
+			document.getElementById("navbar").style.height = "auto";
+			document.getElementById("navbar1").style.height = "auto";
+			document.getElementById("scroolthis").style.display = "block";
+			document.getElementById("scroolthisleft").style.display = "block";
+			document.getElementById("scroolthisright").style.display = "block";
+			document.getElementById("scroolthis1").style.display = "block";
+			document.getElementById("scroolthisleft1").style.display = "block";
+			document.getElementById("scroolthisright1").style.display = "block";
+			// document.getElementById("center").style.display = "block";
+			document.getElementById("navbar-txt").style.display = "block";
+			document.getElementById("navbar-img").style.display = "none";
+
+
+
+			document.getElementById("center").classList.add("started");
+			document.getElementById("center1").classList.add("started");
+		} else {
+			
+
+			document.getElementsByClassName("padding-top")[0].style.paddingTop = "91px";
+			document.getElementById("navbar").style.height = "75px";
+			document.getElementById("navbar1").style.height = "75px";
+			document.getElementById("scroolthis").style.display = "none";
+			document.getElementById("scroolthisleft").style.display = "none";
+			document.getElementById("scroolthisright").style.display = "none";
+			document.getElementById("scroolthis1").style.display = "none";
+			document.getElementById("scroolthisleft1").style.display = "none";
+			document.getElementById("scroolthisright1").style.display = "none";
+
+			// document.getElementById("center").style.display = "none";
+			document.getElementById("navbar-img").style.display = "block";
+			document.getElementById("navbar-txt").style.display = "none";
+
+
+
+			document.getElementById("center").classList.remove("started");
+			document.getElementById("center1").classList.remove("started");
+		}
+	}
+</script>

@@ -1,0 +1,125 @@
+
+<div>
+    <h1>This is a testing drag and drop</h1>
+    <h1>This is a testing drag and drop</h1>
+    <h1>This is a testing drag and drop</h1>
+    <h1>This is a testing drag and drop</h1>
+    <h1>This is a testing drag and drop</h1>
+    <h1>This is a testing drag and drop</h1>
+</div>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" integrity="sha512-zYXldzJsDrNKV+odAwFYiDXV2Cy37cwizT+NkuiPGsa9X1dOz04eHvUWVuxaJ299GvcJT31ug2zO4itXBjFx4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<div id="game" >
+  <div class="container flex-row">
+      <div class="d-flex flex-row flex-nowrap p-2 ">
+        <!-- <section class="drop-header p-2">
+          <img id="" alt="" src="/assets/pharmacy/images/top.png"/>
+        </section> -->
+        <section  class="drop-zone pt-4 pb-12">
+        </section>
+        <!-- <section class="drop-footer p-2">
+          <img id="" alt="" src="/assets/pharmacy/images/button.png">
+        </section> -->
+      </div>
+      <div class=" d-flex flex-row flex-wrap justify-content-center p-4">
+        <button class="btn btn-outline-secondary " onclick="resetFunction()">Reset</button>
+      </div>
+      <div class="drag-items ">
+          <div  id='item' class="items d-flex flex-row flex-wrap justify-content-center">
+              <div class="xyz-in" xyz="fade small stagger">
+                <img class="xyz-in" xyz="fade up big"  id="" alt="" src="/assets/pharmacy/images/top.png"/>
+              </div>
+              <div  class="xyz-in" xyz="fade up big">
+                <img  class="xyz-in" xyz="fade up big" id="" alt="" src="/assets/pharmacy/images/Layer2.png">
+              </div>
+              <div>
+                <img class="xyz-in" xyz="fade up big"  id="" alt="" src="/assets/pharmacy/images/Layer3.png">
+              </div>
+              <div>
+                <img class="xyz-in" xyz="fade up big"  id="" alt="" src="/assets/pharmacy/images/meat.png">
+              </div>
+              <div>
+                <img class="xyz-in" xyz="fade up big"  id="" alt="" src="/assets/pharmacy/images/Layer4.png">
+              </div>
+              <div>
+                <img class="xyz-in" xyz="fade up big"  id="" alt="" src="/assets/pharmacy/images/Layer5.png">
+              </div>
+              <div>
+                <img class="xyz-in" xyz="fade up big"  id="" alt="" src="/assets/pharmacy/images/Layer6.png">
+              </div>
+              <div>
+                <img class="xyz-in" xyz="fade up big"  id="" alt="" src="/assets/pharmacy/images/button.png">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+
+
+
+var div = document.getElementById("game"); 
+var old = div.innerHTML; 
+function resetFunction() {
+   div.innerHTML = old;
+   $.getScript("game.js", function() {
+});
+}
+</script>
+  
+  
+<style>
+  #div1 {
+    width: 200px;
+    height: auto;
+    min-height: 100px;
+    /* padding: 10px; */
+    /* border: 1px solid #aaaaaa; */
+    
+  }
+  #div1 img{
+      margin-bottom: -3px;
+    }
+  img{
+    max-width: 100px;
+  }
+  </style>
+  <p>Drag the W3Schools image into the rectangle:</p>
+  <div class="container d-flex flex-row justify-content-center">
+    <div class="container d-flex flex-column ">
+      <img id="" draggable="false" class="xyz-in" xyz="fade up big"   alt="" src="/assets/pharmacy/images/top.png">
+      <div id="div1" class="d-flex flex-column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+      <img id="" draggable="false" class="xyz-in" xyz="fade up big"   alt="" src="/assets/pharmacy/images/button.png">
+    </div>
+    
+    <div>
+      <img id="drag2" draggable="true" ondragstart="drag(event)" class="xyz-in" xyz="fade up big"   alt="" src="/assets/pharmacy/images/Layer2.png">
+      <img id="drag3" draggable="true" ondragstart="drag(event)" class="xyz-in" xyz="fade up big"   alt="" src="/assets/pharmacy/images/Layer3.png">
+      <img id="drag4" draggable="true" ondragstart="drag(event)" class="xyz-in" xyz="fade up big"   alt="" src="/assets/pharmacy/images/meat.png">
+      <img id="drag5" draggable="true" ondragstart="drag(event)" class="xyz-in" xyz="fade up big"   alt="" src="/assets/pharmacy/images/Layer4.png">
+      <img id="drag6" draggable="true" ondragstart="drag(event)" class="xyz-in" xyz="fade up big"   alt="" src="/assets/pharmacy/images/Layer5.png">
+      <img id="drag7" draggable="true" ondragstart="drag(event)" class="xyz-in" xyz="fade up big"   alt="" src="/assets/pharmacy/images/Layer6.png">
+    </div>
+    
+  </div>
+  
+
+  
+<script>
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+  
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data).cloneNode(true));
+  }
+  </script>

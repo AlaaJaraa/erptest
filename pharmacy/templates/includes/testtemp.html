@@ -1,0 +1,292 @@
+<style>
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+    
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+    
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+    
+    .slider.round:before {
+      border-radius: 50%;
+    }
+    label{
+        margin-bottom: 0 !important;
+    }
+</style>
+
+{% set docs = frappe.get_list('ToDo',fields=['reference_name','owner'], order_by='reference_name asc') %}
+{% for do in docs %}
+    {% if  do.owner==frappe.session.user %}
+    {% set doc = frappe.get_doc('Task', do.reference_name) %}
+        <div class="d-flex  flex-row justify-content-between align-items-center">
+            <div>
+                <div>
+                    <a href="/app/task/{{doc.name}}" target="blank"> task: <span id="task{{loop.index}}">{{ doc.name}}</span>  {% if  doc.subject %}<span> - {{ doc.subject }}</span>{% endif %}</a> 
+                </div>
+                {% set count = namespace(value=0) %}
+                {% for todo in todolist %}
+
+                    {% if  todo.task==doc.name %}
+                        {% if  count.value == 0 %}
+                            <div id="content{{loop.index}}" class="content">
+                                <div>
+                                    Timesheet: <a href="/app/timesheet/{{todo.time_sheet}}" target="blank">{{todo.time_sheet}}</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% set count.value = count.value + 1 %}
+                        {{count}}
+                    {% endif %}
+                    
+                {% endfor %}
+            </div> 
+            <div id="chk{{loop.index}}"  >
+                <label class="switch" >
+                    <!-- <input class="checkbutton" type="checkbox"  id="myCheck{{loop.index}}"  onclick="myFunction(this)">
+                     -->
+                    <input class="checkbutton" type="checkbox"  name="progress"  value="1" tabIndex="1" 
+                    id="myCheck{{loop.index}}"  
+                    onclick="ckChange(this)">
+                    
+                    <span class="slider round" onclick="showAlert();"></span>
+                </label>
+            </div>   
+        </div>
+    {% endif %}
+
+  
+    <div>
+        <button id="collapsebutton{{loop.index}}" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse{{loop.index}}" aria-expanded="false" aria-controls="collapse{{loop.index}}">
+            Show Task Details
+        </button>
+    </div>
+    <div class="collapse" id="collapse{{loop.index}}">
+        
+        <div>
+            Project: {{ doc.project}}  {#<a href="/app/project/{{doc.project}} " target="blank">{{ doc.project}} </a>#}
+        </div>
+        <div>
+            subject: {{ doc.subject }}
+        </div>
+        <div>
+            status: {{ doc.status }}
+        </div>
+        <div>
+            Priority: {{ doc.priority }}
+        </div>
+    </div>
+    <hr>
+    <br>
+
+
+    <script>
+        $('#collapsebutton{{loop.index}}').click(function(){
+            var isVisible = $('#collapse{{loop.index}}').is( ":visible" );
+            var isHidden = $('#collapse{{loop.index}}').is( ":hidden" );
+            if(isVisible){
+                $('#collapsebutton{{loop.index}}').html("Show Task Details")
+            }
+            if(isHidden){
+                $('#collapsebutton{{loop.index}}').html("Hide Task Details")
+            }
+        });
+    </script>
+{% endfor %}
+
+<script>
+    // This code hides duplicated timesheets from dom
+    var content = document.getElementsByClassName('content');
+    for(var i=1; i < content.length+1; i++){
+        var seen = {};
+        $('#content'+i+'>div').each(function() {
+            var txt = $(this).text().toLowerCase();
+            if (seen[txt]){
+                console.log("dsds");
+                $(this).remove();
+            }
+            else{
+                seen[txt] = true;
+            }
+        });
+        
+    }
+    
+// $(document).ready(function () {
+//     var gettime2 = function(){
+//         console.log('older task closed');
+//         frappe.call({
+//             method: 'pharmacy.www.test.get_timelist1',
+//             args: {
+//             },
+//             callback: function(r) {
+//                 if (!r.exc) {
+//                 }
+//             }
+//         });
+//     }
+//     gettime2();
+// });
+$(document).ready(function () {
+
+});
+
+function ckChange(ckType){
+        // var x = document.getElementsByClassName('notcompleted');
+        // for (var i = 0; i < x.length; i++) {
+        //     var lop = x[i].innerText;
+            
+        //     if(document.getElementById('myCheck'+lop).innerText!=null){
+        //         console.log(lop);
+        //         document.getElementById('myCheck'+lop).checked = true;
+        //         var zz=document.getElementById('myCheck'+lop);
+        //         ckChange(zz);
+
+        //         // var c = document.getElementById('myCheck'+lop).innerText;
+        //         // console.log(c);
+        //     }
+        // }
+    var ckName = document.getElementsByName(ckType.name);
+    var checked = document.getElementById(ckType.id);
+    if (checked.checked) {
+      for(var i=0; i < ckName.length; i++){
+        var task = document.getElementById("task"+(i+1)).innerHTML;
+          if(!ckName[i].checked){
+              ckName[i].disabled = true;
+          }else{
+              ckName[i].disabled = false;
+              gettime(task);
+          }
+      } 
+    }
+    else {
+    gettime1();
+      for(var i=0; i < ckName.length; i++){
+        ckName[i].disabled = false;
+        
+      }
+    }    
+}
+
+var gettime = function(taskname){
+    frappe.call({
+        method: 'pharmacy.www.test.get_timelist',
+        args: {
+                task: taskname
+        },
+        callback: function(r) {
+            if (!r.exc) {
+                if(typeof r.message != 'undefined'){ 
+                    $(r.message).appendTo('#placeholdersection1');
+                    console.log('task added:');
+                }
+            }
+        }
+    });
+}
+var gettime1 = function(){
+    console.log('selected task checked');
+    frappe.call({
+        method: 'pharmacy.www.test.get_timelist1',
+        args: {
+        },
+        callback: function(r) {
+            if (!r.exc) {
+                //    if(typeof r.message != 'undefined'){ 
+                //    }
+            }
+        }
+    });
+}
+// var checkopentasks =function(){
+
+// }
+// var x = document.getElementsByClassName('notcompleted');
+//         for (var i = 0; i < x.length; i++) {
+//             var lop = x[i].innerText;
+            
+//             if(document.getElementById('myCheck'+lop).innerText!=null){
+//                 console.log(lop);
+//                 document.getElementById('myCheck'+lop).checked = true;
+//                 var zz=document.getElementById('myCheck'+lop);
+//                 ckChange(zz);
+
+//                 // var c = document.getElementById('myCheck'+lop).innerText;
+//                 // console.log(c);
+//             }
+//         }
+function showAlert() {
+    setTimeout(function(){ 
+        var index = document.querySelectorAll('.checkbutton').length;
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            // alert(checkboxes.length);
+        var dis =$("[id^=chk]:has(input[disabled])").length;
+        // console.log(dis);
+        console.log(checkboxes.length);
+            // var idSelector = function() { return this.id; };
+            // var checked = $(":checkbox:checked").map(idSelector).get() ;
+            // var notcheked = $(":checkbox:not(:checked)").map(idSelector).get() ;
+            // console.log(checked[0]);
+            // if( checked.length==1 && dis>0){
+            //     console.log("cdddd");
+            // }
+        // if( (dis==(index-1))){
+        if(checkboxes.length==1){
+                    frappe.show_alert({
+                            title: 'Close Current Task',
+                            message:'Please remember, you need to close the current task before being able to start new one!',
+                            indicator: 'red'
+                        }, 5);
+
+        }
+    }, 10);
+}
+</script>

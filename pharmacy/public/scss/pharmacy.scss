@@ -1,0 +1,51 @@
+
+
+
+$orange: #ed912a;
+$dark: #161e2e ;
+
+
+#path1{
+    // fill:$dark;
+    stroke-dasharray: 20418;
+    stroke-dashoffset: 20418;
+    animation: sign 0.5s ease  ;
+    animation-fill-mode: forwards;
+}
+@keyframes sign {
+    to {
+        stroke-dashoffset: 0;
+    }
+  }
+#middlepath{
+    // fill:$orange;
+    stroke-dasharray: 22319;
+    stroke-dashoffset: 22319;
+    animation: sign0 0.5s ease  ;
+    animation-fill-mode: forwards;
+    
+}
+@keyframes sign0 {
+
+      to {
+          stroke-dashoffset: 0;
+      }
+    }
+#path2{
+    // fill:$dark;
+    stroke-dasharray: 20609;
+    stroke-dashoffset: 20609;
+    animation: sign1 0.5s ease  ;
+    animation-fill-mode: forwards;
+}
+@keyframes sign1 {
+    to {
+        stroke-dashoffset: 0;
+    }
+    // 0% {
+    //     stroke-dashoffset: 0;
+    //   }
+    //   100% {
+    //     stroke-dashoffset: 20609;
+    //   }
+  }

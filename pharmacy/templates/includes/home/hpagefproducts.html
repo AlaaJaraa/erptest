@@ -1,0 +1,220 @@
+<style>
+
+    .card-body{
+        padding: 0;
+    }
+    .list-group-item{
+        padding: 0;
+    }
+    .swiper-scrollbar-container2 {
+    /* background-color: rgba(0,0,0,.2);
+    border-radius: 999px;
+    padding: 15px 40px;
+    height: 80px; */
+
+}
+    .swiper-scrollbar1 .swiper-scrollbar-drag{
+        background:red;
+    }
+    .swiper-scrollbar1{
+      /* bottom: 40px; */
+    }
+    .swiper-scrollbar2 .swiper-scrollbar-drag{
+        background:rgb(236, 152, 25) !important;
+    }
+    .swiper-button-next2{
+        /* right: 0; */
+    }
+   .swiper-button-prev2{
+        /* left: 0; */
+      }
+      
+    .swiper-button-next1, .swiper-button-prev1{
+      color: rgb(236, 152, 25) !important;
+        
+    }
+    .swiper-button-next2, .swiper-button-prev2{
+        /* color: blue; */
+        /* top: 86%; */
+        color: rgb(236, 152, 25) !important;
+    }
+    .img1{
+      min-height: 120px !important;
+      height: 120px !important;
+      border-radius: 50% !important;
+    }
+</style>
+
+<!-- <div class="homeboxproduct homeboxproductnew">
+  <div class="container d-flex flex-column flex-md-row ">
+          {% for product in productlist %}
+          {% if loop.index == 1 or product.group_title != productlist[loop.index -2].group_title  %}
+          <div class="col  col-md-3 title " id="group_title_for_item" {% if product.group_image  %} style="background-image: url('{{ product.group_image or '' }}');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;{% endif %}">
+              <div class="txt3 ">
+                  {{ product.group_title }} 
+              </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          <div class="row HorizontalScrollContainer">
+            <div><div><div>     
+
+              <div class="swiper mySwiper1">
+                <div class="swiper-wrapper ">
+                  
+                                {% for product in productlist %}
+                           <div class="swiper-slide ">
+                            <div class="Item ItemOff Itembar data">
+                              <a style="display: block;" href="/{{ product.route or '#' }}">
+                                  <div class="img rounded-0" style="background-image: url('{{ product.image or '/assets/alhayani/images/notavailable.jpg' }}');
+                                  background-size: cover;
+                                  background-position: center;
+                                  background-repeat: no-repeat;">
+                                  </div>
+                                  <div class="txt2 rounded-0">
+                                      <div class="name" style="">
+                                          {{ product.item_name }}<br>
+                                      </div>
+                                      {% if product.expiry_date %}
+                                      
+                                      <div>
+                                          EXP: {{ product.expiry_date or 'N/A' }}<br>
+                                      </div>
+                                      {% endif %}
+                                      <div>
+                                          Price: {{ product.formatted_price or 'N/A' }}<br>
+                                      </div>
+                                  </div>
+                              </a>
+              
+                          </div>
+                        </div>
+                            {% endfor %}
+                            
+        
+                </div>
+                <div class="d-flex flex-row">
+                  <div class="swiper-button-prev swiper-button-prev1"></div>
+                  <div class="swiper-scrollbar-container ">
+                    <div class="swiper-scrollbar "></div>
+                  </div>
+                  <div class="swiper-button-next swiper-button-next1"></div>
+                </div>
+                
+                
+                
+                
+            </div>
+
+
+
+    </div>
+</div></div>
+
+
+  </div>
+</div> -->
+
+<div class="container d-flex flex-row">
+    {% for product in productlist %}
+    {% if loop.index == 1 or product.group_title != productlist[loop.index -2].group_title  %}
+    <div style="min-width: 125px; background:black ;margin-right: 25px;" class="text-center d-flex justify-content-center align-items-center">
+        {% if product.group_title %}
+<div class=" h-100 group-title-fa  ">
+    {{ product.group_title }} 
+    
+</div>
+
+
+
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    <div class="swiper mySwiper1">
+        <div class="swiper-wrapper ">
+            {% for product in productlist %}
+              <div class="swiper-slide h-100 pl-2 pr-2">
+                <div class="card" style="">
+                    <img class="card-img-top img1" src="{{ product.image  }}" alt="Card image cap" style="height: 100px;object-fit: cover;">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">{{ product.item_name }}</h5>
+                     
+                    </div>
+                    <ul class="list-group list-group-flush text-center">
+                      <li class="list-group-item"> EXP: {{ product.best_value_date or 'N/A' }}</li>
+                      <li class="list-group-item">Price: {{ product.formatted_mrp or 'N/A'}}</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                    <div class="card-body text-center">
+                      <a href="/{{ product.route}}{%if product.batch_id%}/?batch={{product.batch_id}}{% endif %}" class="card-link">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="d-flex flex-row">
+          <div class="swiper-button-prev swiper-button-prev1"></div>
+          <div class="swiper-scrollbar-container1">
+            <div class="swiper-scrollbar swiper-scrollbar1"></div>
+          </div>
+          <div class="swiper-button-next swiper-button-next1"></div>
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+
+<script>
+      var swiper1 = new Swiper(".mySwiper1", {
+    rewind: true,
+    slidesPerView: 1,
+    spaceBetween: 4,
+    // centeredSlides: true,
+    // freeMode: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 1
+    },
+    // when window width is >= 480px
+    576: {
+      slidesPerView: 2,
+      spaceBetween: 3
+    },
+    // when window width is >= 640px
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 4
+    },
+    // when window width is >= 640px
+    992: {
+      slidesPerView: 4,
+      spaceBetween: 5
+    },
+    1200: {
+      slidesPerView: 5,
+      spaceBetween: 8
+    }
+  },
+    // scrollbar: {
+    //   el: ".swiper-scrollbar1",
+    //   hide: true
+    // },
+    navigation: {
+      nextEl: ".swiper-button-next1",
+      prevEl: ".swiper-button-prev1"
+    }
+  });
+</script>
